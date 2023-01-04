@@ -1,6 +1,9 @@
 import "./App.css";
 import { useState } from "react";
 import { createUser, getPosts } from "./API/api";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Nav from "./Components/Nav/Nav";
 
 function App() {
   const [dataState, setDataState] = useState(null);
@@ -12,20 +15,10 @@ function App() {
 
   return (
     <div className="App">
-      Lofty
-      <button onClick={getPostFromAPI}>API Call</button>
-      {dataState ? (
-        <div>
-          <h1></h1>
-          <img
-            src={`http://catstagram.lofty.codes/media/${dataState.image}`}
-            width="300px"
-            height="300px"
-          />
-        </div>
-      ) : (
-        <h1>No Data</h1>
-      )}
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
