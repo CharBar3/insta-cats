@@ -1,7 +1,7 @@
-import "./PostCard.csss";
+import "./PostCard.css";
 
-const PostCard = () => {
-  return <div></div>;
+const PostCard = ({ name }) => {
+  return <div>{name}</div>;
 };
 
 export default PostCard;

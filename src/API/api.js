@@ -31,7 +31,6 @@ export const getPosts = async () => {
       "Content-type": "Application/json",
     },
   });
-  const data = await promise.json();
-  console.log(data);
-  return data;
+
+  return await promise.json();
 };

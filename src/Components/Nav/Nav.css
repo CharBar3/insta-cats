@@ -1,6 +1,7 @@
 .Nav {
   display: flex;
   justify-content: space-between;
+  height: 64px;
 }
 
 .Nav a {
