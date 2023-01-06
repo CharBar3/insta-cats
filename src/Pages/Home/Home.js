@@ -1,4 +1,4 @@
-import React from "react";
+import "./Home.css";
 import { useEffect } from "react";
 import PostCard from "../../Components/PostCard/PostCard";
 
@@ -7,10 +7,12 @@ const Home = ({ posts, getPosts }) => {
     getPosts();
   }, []);
 
+  console.log(posts);
+
   const showPosts =
     posts &&
-    posts.map(({ name }) => {
-      return <PostCard name={name} />;
+    posts.map(({ pk, name, image }) => {
+      return <PostCard key={pk} name={name} image={image} />;
     });
 
   if (!posts) {
