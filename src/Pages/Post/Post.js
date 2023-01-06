@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const Post = ({ posts, getPosts }) => {
+const Post = ({ posts, getPosts, addComment }) => {
   const params = useParams();
   const [post, setPost] = useState(
     posts && posts.find((post) => post.pk == params.id)
@@ -15,7 +15,7 @@ const Post = ({ posts, getPosts }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.comment.value);
+    addComment(post.pk, e.target.comment.value);
   };
 
   if (!post) {

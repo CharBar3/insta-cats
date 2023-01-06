@@ -47,6 +47,25 @@ function App() {
     setPosts(data);
   };
 
+  // Add comment to Post
+  const addComment = async (pk, text) => {
+    console.log("pk " + pk);
+    console.log("text " + text);
+    const promise = await fetch(`${URL}comments/`, {
+      method: "POST",
+      headers: {
+        "Content-type": "Application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+        entry: pk,
+      }),
+    });
+
+    const data = await promise.json();
+    console.log(data);
+  };
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -57,7 +76,9 @@ function App() {
         <Route path="/" element={<Home posts={posts} getPosts={getPosts} />} />
         <Route
           path="/post/:id"
-          element={<Post posts={posts} getPosts={getPosts} />}
+          element={
+            <Post posts={posts} getPosts={getPosts} addComment={addComment} />
+          }
         />
       </Routes>
     </div>
