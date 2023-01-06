@@ -7,8 +7,6 @@ const Home = ({ posts, getPosts }) => {
     getPosts();
   }, []);
 
-  console.log(posts);
-
   const showPosts =
     posts &&
     posts.map(({ name }) => {
@@ -20,13 +18,6 @@ const Home = ({ posts, getPosts }) => {
   } else {
     return <div className="Home">{showPosts}</div>;
   }
-
-  // return (
-  //   <div className="Home">
-  //     {posts ? showPosts : <h1>Loading</h1>}
-  //     {/* {showPosts} */}
-  //   </div>
-  // );
 };
 
 export default Home;
