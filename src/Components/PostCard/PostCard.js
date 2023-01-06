@@ -1,8 +1,8 @@
 import "./PostCard.css";
 import { ReactComponent as DownArrow } from "../../Icons/chevron-down.svg";
+import { Link } from "react-router-dom";
 
-const PostCard = ({ name, image }) => {
-  // console.log(typeof name);
+const PostCard = ({ pk, name, image }) => {
   return (
     <div className="PostCard">
       <div>
@@ -11,7 +11,9 @@ const PostCard = ({ name, image }) => {
       </div>
 
       <div>
-        <DownArrow />
+        <Link to={`/post/${pk}`}>
+          <DownArrow />
+        </Link>
       </div>
     </div>
   );

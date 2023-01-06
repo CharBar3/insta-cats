@@ -1,9 +1,10 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home/Home";
 import Nav from "./Components/Nav/Nav";
+import Post from "./Pages/Post/Post";
 
 function App() {
   const [posts, setPosts] = useState(null);
@@ -46,12 +47,18 @@ function App() {
     setPosts(data);
   };
 
+  useEffect(() => {
+    getPosts();
+  }, []);
   return (
     <div className="App">
       <Nav />
       <Routes>
         <Route path="/" element={<Home posts={posts} getPosts={getPosts} />} />
-        <Route path="/post/:id" />
+        <Route
+          path="/post/:id"
+          element={<Post posts={posts} getPosts={getPosts} />}
+        />
       </Routes>
     </div>
   );
