@@ -27,9 +27,8 @@ const ShowPost = ({ addComment }) => {
     e.preventDefault();
     try {
       await addComment(post.pk, e.target.comment.value);
-      // await addComment(post.pk);
+      e.target.comment.value = "";
       getSinglePost();
-      e.target.value = "";
     } catch (error) {
       console.log(error);
     }
