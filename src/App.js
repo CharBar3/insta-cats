@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home/Home";
 import Nav from "./Components/Nav/Nav";
-import Post from "./Pages/Post/Post";
 import ShowPost from "./Pages/Post/ShowPost";
 
 function App() {
@@ -12,11 +11,11 @@ function App() {
 
   // API
   const URL = "http://catstagram.lofty.codes/api/";
-  const apiCall = async () => {
-    const promise = await fetch(URL);
-    const data = await promise.json();
-    console.log(data);
-  };
+  // const apiCall = async () => {
+  //   const promise = await fetch(URL);
+  //   const data = await promise.json();
+  //   console.log(data);
+  // };
 
   // Create a User
   const createUser = async () => {
@@ -50,8 +49,6 @@ function App() {
 
   // Add comment to Post
   const addComment = async (pk, text) => {
-    console.log("pk " + pk);
-    console.log("text " + text);
     const promise = await fetch(`${URL}comments/`, {
       method: "POST",
       headers: {
@@ -77,10 +74,7 @@ function App() {
         <Route path="/" element={<Home posts={posts} getPosts={getPosts} />} />
         <Route
           path="/post/:id"
-          element={
-            // <Post posts={posts} getPosts={getPosts} addComment={addComment} />
-            <ShowPost />
-          }
+          element={<ShowPost addComment={addComment} />}
         />
       </Routes>
     </div>

@@ -36,10 +36,6 @@ const Post = ({ posts, getPosts, addComment }) => {
     // }
   };
 
-  useEffect(() => {
-    getSinglePost();
-  }, []);
-
   if (post) {
     return <h1>Loading...</h1>;
   } else {
