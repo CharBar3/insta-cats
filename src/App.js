@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Nav from "./Components/Nav/Nav";
 import Post from "./Pages/Post/Post";
+import ShowPost from "./Pages/Post/ShowPost";
 
 function App() {
   const [posts, setPosts] = useState(null);
@@ -63,7 +64,7 @@ function App() {
     });
 
     const data = await promise.json();
-    console.log(data);
+    return data;
   };
 
   useEffect(() => {
@@ -77,7 +78,8 @@ function App() {
         <Route
           path="/post/:id"
           element={
-            <Post posts={posts} getPosts={getPosts} addComment={addComment} />
+            // <Post posts={posts} getPosts={getPosts} addComment={addComment} />
+            <ShowPost />
           }
         />
       </Routes>

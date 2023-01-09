@@ -3,22 +3,44 @@ import { useParams } from "react-router-dom";
 
 const Post = ({ posts, getPosts, addComment }) => {
   const params = useParams();
-  const [post, setPost] = useState(
-    posts && posts.find((post) => post.pk == params.id)
-  );
+  const [post, setPost] = useState(null);
 
-  console.log(post);
+  // get single post
+  const URL = "http://catstagram.lofty.codes/api/";
+  const getSinglePost = async () => {
+    const promise = await fetch(`${URL}posts/${params.id}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "Application/json",
+      },
+    });
+    const data = await promise.json();
+    return await data;
+  };
+
+  // setPost(getSinglePost());
 
   const showComments = post.comments.map(({ pk, text }) => {
     return <li>{text}</li>;
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addComment(post.pk, e.target.comment.value);
+    getSinglePost();
+    // const response = await addComment(post.pk, e.target.comment.value);
+    // if (response.text) {
+
+    //   });
+    // } else {
+    //   console.log("Comment Failed! Please try again later");
+    // }
   };
 
-  if (!post) {
+  useEffect(() => {
+    getSinglePost();
+  }, []);
+
+  if (post) {
     return <h1>Loading...</h1>;
   } else {
     return (
