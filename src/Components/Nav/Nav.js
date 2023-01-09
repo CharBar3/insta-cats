@@ -1,5 +1,6 @@
 import "./Nav.css";
 import { Link } from "react-router-dom";
+import NewPost from "../NewPost/NewPost";
 
 const Nav = () => {
   return (
@@ -7,9 +8,7 @@ const Nav = () => {
       <Link to="/">
         <button className="NavHome">InstaCats</button>
       </Link>
-      <Link className="NavNewPost" to="/post/new">
-        Add Your Photo
-      </Link>
+      <NewPost />
     </div>
   );
 };
