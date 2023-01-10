@@ -24,6 +24,7 @@ const Home = () => {
   const sortPosts = (condition) => {
     if (condition === "newest") {
       setPosts(null);
+      // fetchData already organizes from newest to oldest
       fetchData();
     } else if (condition === "oldest") {
       setPosts((prevState) => {
@@ -60,7 +61,7 @@ const Home = () => {
             Recently Updated!
           </button>
         </div>
-        <div>{showPosts}</div>
+        <div className="HomePhotoSection">{showPosts}</div>
       </div>
     );
   }
