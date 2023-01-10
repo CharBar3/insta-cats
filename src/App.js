@@ -44,7 +44,11 @@ function App() {
     });
     const data = await promise.json();
 
-    setPosts(data);
+    setPosts(
+      data.sort((a, b) => {
+        return b.timestamp_created > a.timestamp_created ? 1 : -1;
+      })
+    );
   };
 
   // Add comment to Post
