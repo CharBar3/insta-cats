@@ -9,7 +9,7 @@ const Nav = () => {
         <button className="NavHome">InstaCats</button>
       </Link>
       <Link to="/createAccount">
-        <button className="NavHome">Create Account!</button>
+        <button className="NavHome">Create an Account!</button>
       </Link>
       <NewPost />
     </div>
