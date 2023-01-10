@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../../API/api";
+import "./CreateAccount.css";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const CreateAccount = () => {
   };
 
   return (
-    <div>
+    <div className="CreateAccount">
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>First Name</label>
         <input

@@ -1,0 +1,38 @@
+.CreateAccount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CreateAccount form {
+  display: flex;
+  flex-direction: column;
+}
+
+.CreateAccount form label {
+  font-size: xx-large;
+  color: gray;
+}
+
+.CreateAccount form input {
+  font-size: xx-large;
+  background: none;
+  border: 1px solid grey;
+  border-radius: 6px;
+  margin: 10px;
+  color: lime;
+}
+
+.CreateAccount button {
+  background: lime;
+  border: 1px solid gray;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.CreateAccount button:hover {
+  cursor: pointer;
+}
