@@ -1,49 +1,43 @@
 import "./Home.css";
 import PostCard from "../../Components/PostCard/PostCard";
+import { getAllPosts } from "../../API/API";
 
 import { useState, useEffect } from "react";
 const Home = () => {
+  // On component load related functions
+  const fetchData = async () => {
+    try {
+      const data = await getAllPosts();
+      setPosts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getAllPosts();
+    fetchData();
   }, []);
 
+  // state variable for holding our posts data after it's been fetched
   const [posts, setPosts] = useState(null);
-
-  const getAllPosts = async () => {
-    const URL = "http://catstagram.lofty.codes/api/";
-    const promise = await fetch(`${URL}posts/`, {
-      method: "GET",
-      headers: {
-        "Content-type": "Application/json",
-      },
-    });
-    const data = await promise.json();
-    setPosts(
-      data.sort((a, b) => {
-        return b.timestamp_created > a.timestamp_created ? 1 : -1;
-      })
-    );
-  };
 
   const sortPosts = (condition) => {
     if (condition === "newest") {
       setPosts(null);
-      getAllPosts();
+      fetchData();
     } else if (condition === "oldest") {
       setPosts((prevState) => {
-        return [
-          ...prevState.sort((a, b) => {
-            return a.timestamp_created > b.timestamp_created ? 1 : -1;
-          }),
-        ];
+        const newState = prevState.sort((a, b) => {
+          return a.timestamp_created > b.timestamp_created ? 1 : -1;
+        });
+        return [...newState];
       });
     } else if ("updated") {
       setPosts((prevState) => {
-        return [
-          ...prevState.sort((a, b) => {
-            return b.timestamp_updated > a.timestamp_updated ? 1 : -1;
-          }),
-        ];
+        const newState = prevState.sort((a, b) => {
+          return b.timestamp_updated > a.timestamp_updated ? 1 : -1;
+        });
+        return [...newState];
       });
     }
   };
