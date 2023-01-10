@@ -8,6 +8,9 @@ const Nav = () => {
       <Link to="/">
         <button className="NavHome">InstaCats</button>
       </Link>
+      <Link to="/createAccount">
+        <button className="NavHome">Create Account!</button>
+      </Link>
       <NewPost />
     </div>
   );

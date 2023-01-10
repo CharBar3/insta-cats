@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const ShowPost = ({ addComment }) => {
+const ShowPost = () => {
   const params = useParams();
   const [post, setPost] = useState(null);
   const [postComments, setPostComments] = useState([]);
@@ -20,8 +20,24 @@ const ShowPost = ({ addComment }) => {
   };
 
   const showComments = postComments.map(({ pk, text }) => {
-    return <li>{text}</li>;
+    return <li key={pk}>{text}</li>;
   });
+
+  const addComment = async (pk, text) => {
+    const promise = await fetch(`${URL}comments/`, {
+      method: "POST",
+      headers: {
+        "Content-type": "Application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+        entry: pk,
+      }),
+    });
+
+    const data = await promise.json();
+    return data;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
