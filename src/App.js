@@ -19,7 +19,7 @@ function App() {
 
   // Create a User
   const createUser = async () => {
-    const promise = await fetch(`${URL}users/`, {
+    const promise = await fetch(`http://catstagram.lofty.codes/api/users/`, {
       method: "POST",
       headers: {
         "Content-type": "Application/json",
