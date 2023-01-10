@@ -54,7 +54,7 @@ const Home = () => {
   } else {
     return (
       <div className="Home">
-        <div>
+        <div className="HomeButtons">
           <button onClick={() => sortPosts("newest")}>Newest!</button>
           <button onClick={() => sortPosts("oldest")}>Oldest!</button>
           <button onClick={() => sortPosts("updated")}>
