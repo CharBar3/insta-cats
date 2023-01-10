@@ -7,15 +7,8 @@ import Nav from "./Components/Nav/Nav";
 import ShowPost from "./Pages/Post/ShowPost";
 
 function App() {
-  const [posts, setPosts] = useState(null);
-
-  // API
+  // API URL would normally be hidden in .env
   const URL = "http://catstagram.lofty.codes/api/";
-  // const apiCall = async () => {
-  //   const promise = await fetch(URL);
-  //   const data = await promise.json();
-  //   console.log(data);
-  // };
 
   // Create a User
   const createUser = async () => {
@@ -32,23 +25,6 @@ function App() {
       }),
     });
     const data = await promise.json();
-  };
-
-  // Get Posts
-  const getPosts = async () => {
-    const promise = await fetch(`${URL}posts/`, {
-      method: "GET",
-      headers: {
-        "Content-type": "Application/json",
-      },
-    });
-    const data = await promise.json();
-
-    setPosts(
-      data.sort((a, b) => {
-        return b.timestamp_created > a.timestamp_created ? 1 : -1;
-      })
-    );
   };
 
   // Add comment to Post
@@ -68,14 +44,11 @@ function App() {
     return data;
   };
 
-  useEffect(() => {
-    getPosts();
-  }, []);
   return (
     <div className="App">
       <Nav />
       <Routes>
-        <Route path="/" element={<Home posts={posts} getPosts={getPosts} />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/post/:id"
           element={<ShowPost addComment={addComment} />}
