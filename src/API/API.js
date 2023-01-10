@@ -11,3 +11,21 @@ export const getAllPosts = async () => {
 
   return data;
 };
+
+export const createPost = async (postName, postImage) => {
+  const formData = new FormData();
+  formData.append("name", postName);
+  formData.append("image", postImage);
+  const response = await fetch(`${URL}posts/`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (response.status > 299) {
+    return response.status;
+  }
+
+  const data = await response.json();
+
+  return data;
+};

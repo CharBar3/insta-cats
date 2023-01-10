@@ -2,6 +2,7 @@ import "./NewPost.css";
 import { useState, useEffect, useRef } from "react";
 import Modal from "../Modal/Modal";
 import { useNavigate } from "react-router-dom";
+import { createPost } from "../../API/api";
 
 const NewPost = () => {
   const modalRef = useRef();
@@ -24,21 +25,6 @@ const NewPost = () => {
   const [postImage, setPostImage] = useState(null);
   const [postName, setPostName] = useState(null);
 
-  const apiURL = "http://catstagram.lofty.codes/api/";
-  const createPost = async () => {
-    const formData = new FormData();
-    formData.append("name", postName);
-    formData.append("image", postImage);
-    const promise = await fetch(`${apiURL}posts/`, {
-      method: "POST",
-      body: formData,
-    });
-    const data = await promise.json();
-    console.log(`/post/${data.pk}`);
-    setIsOpen(false);
-    navigate(`/post/${data.pk}`);
-  };
-
   const handleFile = (e) => {
     setPostImage(e.target.files[0]);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
@@ -48,9 +34,17 @@ const NewPost = () => {
     setPostName(e.target.value);
   };
 
-  const submitPost = (e) => {
+  const submitPost = async (e) => {
     e.preventDefault();
-    createPost();
+
+    const data = await createPost(postName, postImage);
+
+    if (data > 299) {
+      alert("Failed to Post!");
+    } else {
+      setIsOpen(false);
+      navigate(`/post/${data.pk}`);
+    }
   };
 
   return (

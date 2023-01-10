@@ -1,6 +1,6 @@
 import "./Home.css";
 import PostCard from "../../Components/PostCard/PostCard";
-import { getAllPosts } from "../../API/API";
+import { getAllPosts } from "../../API/api";
 
 import { useState, useEffect } from "react";
 const Home = () => {
