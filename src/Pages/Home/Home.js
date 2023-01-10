@@ -56,10 +56,10 @@ const Home = () => {
       <div className="Home">
         <div className="HomeButtons">
           <button onClick={() => sortPosts("newest")}>Newest!</button>
-          <button onClick={() => sortPosts("oldest")}>Oldest!</button>
           <button onClick={() => sortPosts("updated")}>
             Recently Updated!
           </button>
+          <button onClick={() => sortPosts("oldest")}>Oldest!</button>
         </div>
         <div className="HomePhotoSection">{showPosts}</div>
       </div>

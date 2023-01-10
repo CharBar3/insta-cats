@@ -5,12 +5,12 @@ import NewPost from "../NewPost/NewPost";
 const Nav = () => {
   return (
     <div className="Nav">
-      <Link to="/">
-        <button className="NavHome">InstaCats</button>
-      </Link>
-      <Link to="/createAccount">
-        <button className="NavHome">Create an Account!</button>
-      </Link>
+      <div>
+        <Link to="/">
+          <button>InstaCats</button>
+        </Link>
+        <Link to="/createAccount">Create an Account!</Link>
+      </div>
       <NewPost />
     </div>
   );
