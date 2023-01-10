@@ -20,7 +20,7 @@ const NewPost = () => {
     };
   });
 
-  const [file, setFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [postImage, setPostImage] = useState(null);
   const [postName, setPostName] = useState(null);
 
@@ -41,11 +41,16 @@ const NewPost = () => {
 
   const handleFile = (e) => {
     setPostImage(e.target.files[0]);
-    setFile(URL.createObjectURL(e.target.files[0]));
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleChange = (e) => {
     setPostName(e.target.value);
+  };
+
+  const submitPost = (e) => {
+    e.preventDefault();
+    createPost();
   };
 
   return (
@@ -53,22 +58,25 @@ const NewPost = () => {
       <button onClick={() => setIsOpen(true)}>Add Your Photo</button>
       <Modal isOpen={isOpen}>
         <div ref={modalRef} className="NewPostModal">
-          {/* <form> */}
-          {/* <label>Choose Photo:</label> */}
-          <input type="file" accept="image/*" onChange={handleFile} />
-          <h1>IMG below</h1>
-          {file ? (
-            <img src={file} alt={file.name} width="200px" />
-          ) : (
-            <img
-              src="https://i.pinimg.com/564x/eb/bb/b4/ebbbb41de744b5ee43107b25bd27c753.jpg"
-              width="200px"
+          <form onSubmit={(e) => submitPost(e)}>
+            <input
+              className="imageInput"
+              type="file"
+              accept="image/*"
+              onChange={handleFile}
+              required
             />
-          )}
-          <input type="text" onChange={(e) => handleChange(e)} />
-          <button onClick={createPost}>Post</button>
-          {/* </form> */}
-          <div></div>
+            {!imagePreview ? (
+              <h1>Photo Preview</h1>
+            ) : (
+              <img src={imagePreview} alt={imagePreview.name} />
+            )}
+            <div>
+              <label>Name your Photo!</label>
+              <input type="text" onChange={(e) => handleChange(e)} required />
+              <button type="submit">POST IT!</button>
+            </div>
+          </form>
         </div>
       </Modal>
     </div>

@@ -1,7 +1,4 @@
 .NewPostModal {
-  background-color: white;
-  border: 2px solid lightgrey;
-
   position: fixed;
 
   width: 600px;
@@ -11,4 +8,42 @@
   left: 50%;
   margin-top: -375px;
   margin-left: -300px;
+
+  background-color: black;
+  border: 1px solid gray;
+  z-index: 100;
+
+  color: gray;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NewPostModal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 80%;
+  height: 80%;
+}
+
+.NewPostModal form img {
+  max-width: 60%;
+}
+.NewPostModal form input {
+  font-size: large;
+  background: none;
+  border-radius: 20px;
+  border: 1px solid gray;
+  width: 100%;
+  margin-bottom: 30px;
+  color: lime;
+}
+.NewPostModal form div label {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: large;
 }
