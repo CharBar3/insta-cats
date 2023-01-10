@@ -1,0 +1,61 @@
+.Post {
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+
+.Post input {
+  font-size: large;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 10px;
+  color: lime;
+  margin-right: 6px;
+}
+
+.PostPictureName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.PostPictureName img {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+.Post button {
+  background: lime;
+  border: 1px solid gray;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+.Post button:hover {
+  cursor: pointer;
+}
+
+.Post ul {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: ;
+  font-size: x-large;
+  list-style-type: none;
+}
+
+.Post li {
+  padding: 10px;
+  margin: 6px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  color: lime;
+}

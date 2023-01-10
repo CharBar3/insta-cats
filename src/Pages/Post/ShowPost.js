@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./ShowPost.css";
 
 const ShowPost = () => {
   const params = useParams();
@@ -59,17 +60,15 @@ const ShowPost = () => {
   } else {
     return (
       <div className="Post">
-        <div className="PostInner">
-          <img
-            src={`http://catstagram.lofty.codes/media/${post.image}`}
-            width="300px"
-          />
+        <div className="PostPictureName">
+          <img src={`http://catstagram.lofty.codes/media/${post.image}`} />
           <h1>{post.name}</h1>
         </div>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input type="text" name="comment" />
           <button type="submit">Comment</button>
         </form>
+
         <ul>{showComments}</ul>
       </div>
     );
