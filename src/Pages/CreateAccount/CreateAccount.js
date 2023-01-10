@@ -6,29 +6,6 @@ import { createUser } from "../../API/api";
 const CreateAccount = () => {
   const navigate = useNavigate();
 
-  // const createUser = async () => {
-  //   const response = await fetch(`http://catstagram.lofty.codes/api/users/`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "Application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       email: formState.email,
-  //       password: formState.password,
-  //       first_name: formState.first_name,
-  //       last_name: formState.last_name,
-  //     }),
-  //   });
-
-  //   console.log(response.status);
-  //   if (response.status > 299) {
-  //     alert("Failed to create an account!");
-  //   } else {
-  //     alert("Account created!");
-  //     navigate("/");
-  //   }
-  // };
-
   const [formState, setFormState] = useState({
     email: "",
     password: "",
