@@ -1,0 +1,14 @@
+.NewPostModal {
+  background-color: white;
+  border: 2px solid lightgrey;
+
+  position: fixed;
+
+  width: 600px;
+  height: 750px;
+  border-radius: 22px;
+  top: 50%;
+  left: 50%;
+  margin-top: -375px;
+  margin-left: -300px;
+}
