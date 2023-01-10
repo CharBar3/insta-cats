@@ -1,32 +1,33 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../../API/api";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
 
-  const createUser = async () => {
-    const promise = await fetch(`http://catstagram.lofty.codes/api/users/`, {
-      method: "POST",
-      headers: {
-        "Content-type": "Application/json",
-      },
-      body: JSON.stringify({
-        email: formState.email,
-        password: formState.password,
-        first_name: formState.first_name,
-        last_name: formState.last_name,
-      }),
-    });
-    const data = await promise.json();
-    console.log(data);
-    if (!data.name) {
-      alert("Failed to create an account!");
-    } else {
-      alert("Account created!");
-      navigate("/");
-    }
-  };
+  // const createUser = async () => {
+  //   const response = await fetch(`http://catstagram.lofty.codes/api/users/`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "Application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: formState.email,
+  //       password: formState.password,
+  //       first_name: formState.first_name,
+  //       last_name: formState.last_name,
+  //     }),
+  //   });
+
+  //   console.log(response.status);
+  //   if (response.status > 299) {
+  //     alert("Failed to create an account!");
+  //   } else {
+  //     alert("Account created!");
+  //     navigate("/");
+  //   }
+  // };
 
   const [formState, setFormState] = useState({
     email: "",
@@ -48,7 +49,19 @@ const CreateAccount = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser();
+    const statusCode = createUser(
+      formState.email,
+      formState.password,
+      formState.first_name,
+      formState.last_name
+    );
+
+    if (statusCode > 299) {
+      alert("Failed to create an account!");
+    } else {
+      alert("Account created!");
+      navigate("/");
+    }
   };
 
   return (

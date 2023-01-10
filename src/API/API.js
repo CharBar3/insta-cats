@@ -29,3 +29,20 @@ export const createPost = async (postName, postImage) => {
 
   return data;
 };
+
+export const createUser = async (email, password, firstName, lastName) => {
+  const response = await fetch(`${URL}users/`, {
+    method: "POST",
+    headers: {
+      "Content-type": "Application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      first_name: firstName,
+      last_name: lastName,
+    }),
+  });
+
+  return response.status;
+};
